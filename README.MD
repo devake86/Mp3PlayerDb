@@ -6,7 +6,7 @@ Mp3PlayerDb combines local MP3 playback with song management and a customizable 
 
 Song information can be entered manually or imported from ID3 metadata.
 
-[**Download for Windows (v1.0-rc1)**](https://github.com/devake86/)
+[**Download for Windows (v1.0-rc1)**](https://github.com/devake86/Mp3PlayerDb/releases/download/v1.0-rc1/Mp3PlayerDb_v1.0-rc1.zip)
 
 ---
 
@@ -101,22 +101,6 @@ Clone the repository and run the application with the Gradle Wrapper:
 
 ```powershell
 .\gradlew run
-```
-
----
-
-## Building
-
-Build the project and prepare the input directory for `jpackage`:
-
-```powershell
-.\gradlew clean prepareJpackageInput
-```
-
-The application JAR and required runtime dependencies are copied to:
-
-```text
-jpackage-input
 ```
 
 ---
