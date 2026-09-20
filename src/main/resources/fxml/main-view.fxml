@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<!--
+    MAIN LAYOUT
+ -->
+<GridPane fx:id="rootLayout"
+          xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="app.mp3playerdb.MainController"
+          style="-fx-padding: 8 8 8 8;">
+
+    <!--
+        MAIN COLUMNS
+     -->
+    <columnConstraints>
+        <ColumnConstraints minWidth="300"
+                           prefWidth="300"
+                           maxWidth="300"/>
+
+        <ColumnConstraints hgrow="ALWAYS"/>
+    </columnConstraints>
+
+    <rowConstraints>
+        <RowConstraints percentHeight="100"/>
+    </rowConstraints>
+
+    <!--
+        SONG INPUT AND ACTIONS
+     -->
+    <GridPane hgap="8"
+              vgap="8"
+              maxWidth="Infinity"
+              maxHeight="Infinity"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="0">
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="80"
+                               prefWidth="80"
+                               maxWidth="80"/>
+
+            <ColumnConstraints minWidth="204"
+                               prefWidth="204"
+                               maxWidth="204"/>
+        </columnConstraints>
+
+        <Region GridPane.columnIndex="0"
+                GridPane.columnSpan="2"
+                GridPane.rowIndex="0"
+                prefHeight="32"
+                minHeight="32"
+                maxHeight="32"/>
+
+        <!--
+            SONG INPUT FIELDS
+         -->
+        <Label text="Artist"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="1"
+               style="-fx-font-family: 'JetBrains Mono';
+                       -fx-font-weight: bold;"/>
+
+        <TextField fx:id="songArtistTextField"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="1"/>
+
+        <Label text="Title"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="2"
+               style="-fx-font-family: 'JetBrains Mono';
+                       -fx-font-weight: bold;"/>
+
+        <TextField fx:id="songTitleTextField"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"/>
+
+        <Label text="Album"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="3"
+               style="-fx-font-family: 'JetBrains Mono';
+                       -fx-font-weight: bold;"/>
+
+        <TextField fx:id="songAlbumTextField"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="3"/>
+
+        <Label text="Year"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="4"
+               style="-fx-font-family: 'JetBrains Mono';
+                       -fx-font-weight: bold;"/>
+
+        <TextField fx:id="songYearTextField"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="4"/>
+
+        <Label text="Genre"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="5"
+               style="-fx-font-family: 'JetBrains Mono';
+                       -fx-font-weight: bold;"/>
+
+        <ComboBox fx:id="songGenreComboBox"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="5"
+                  minWidth="204"/>
+
+        <Label text="File Path"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="6"
+               style="-fx-font-family: 'JetBrains Mono';
+                       -fx-font-weight: bold;"/>
+
+        <TextField fx:id="songFilePathTextField"
+                   editable="false"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="6"/>
+
+        <Button fx:id="selectFileButton"
+                text="Select File"
+                prefWidth="112"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="7"/>
+
+        <Separator GridPane.columnIndex="0"
+                   GridPane.columnSpan="2"
+                   GridPane.rowIndex="8"
+                   maxWidth="Infinity"
+                   style="-fx-padding: 8 8 8 8;"/>
+
+        <!--
+            SONG LIST RESET
+         -->
+        <Button fx:id="clearAndShowAllButton"
+                text="All Songs"
+                maxWidth="192"
+                GridPane.halignment="CENTER"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="9"
+                GridPane.columnSpan="2"/>
+
+        <Separator GridPane.columnIndex="0"
+                   GridPane.columnSpan="2"
+                   GridPane.rowIndex="10"
+                   maxWidth="Infinity"
+                   style="-fx-padding: 8 8 8 8;"/>
+
+        <!--
+            SONG MANAGEMENT
+         -->
+        <Button fx:id="createButton"
+                text="Add Song"
+                maxWidth="192"
+                GridPane.halignment="CENTER"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="11"
+                GridPane.columnSpan="2"/>
+
+        <Button fx:id="searchButton"
+                text="Find Song"
+                maxWidth="192"
+                GridPane.halignment="CENTER"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="12"
+                GridPane.columnSpan="2"/>
+
+        <Button fx:id="updateButton"
+                text="Update Song"
+                maxWidth="192"
+                GridPane.halignment="CENTER"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="13"
+                GridPane.columnSpan="2"/>
+
+        <Button fx:id="deleteButton"
+                text="Delete Song"
+                maxWidth="192"
+                GridPane.halignment="CENTER"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="14"
+                GridPane.columnSpan="2"/>
+
+        <Separator GridPane.columnIndex="0"
+                   GridPane.columnSpan="2"
+                   GridPane.rowIndex="15"
+                   maxWidth="Infinity"
+                   style="-fx-padding: 8 8 8 8;"/>
+
+        <!--
+            SELECTED SONG PLAYBACK
+         -->
+        <Button fx:id="loadAndPlaySelectedSongButton"
+                text="Play Song"
+                maxWidth="192"
+                GridPane.halignment="CENTER"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="16"
+                GridPane.columnSpan="2"/>
+
+        <Region GridPane.columnIndex="0"
+                GridPane.columnSpan="2"
+                GridPane.rowIndex="17"
+                GridPane.vgrow="ALWAYS"/>
+
+        <HBox alignment="BOTTOM_LEFT"
+              GridPane.columnIndex="0"
+              GridPane.columnSpan="2"
+              GridPane.rowIndex="18">
+
+            <!--
+                THEME CONTROLS
+             -->
+            <Button fx:id="lightThemeButton"
+                    text="☀"
+                    prefWidth="32"
+                    prefHeight="32"
+                    minHeight="32"
+                    maxHeight="32"
+                    style="-fx-font-size: 20px;"
+                    accessibleText="Light Theme">
+                <tooltip>
+                    <Tooltip text="Light Theme"/>
+                </tooltip>
+            </Button>
+
+            <Button fx:id="darkThemeButton"
+                    text="☾"
+                    prefWidth="32"
+                    prefHeight="32"
+                    minHeight="32"
+                    maxHeight="32"
+                    style="-fx-font-size: 20px;"
+                    accessibleText="Dark Theme">
+                <tooltip>
+                    <Tooltip text="Dark Theme"/>
+                </tooltip>
+            </Button>
+        </HBox>
+    </GridPane>
+
+    <!--
+        SONGS, PLAYER AND PLAYLIST
+     -->
+    <GridPane hgap="8"
+              vgap="8"
+              maxWidth="Infinity"
+              maxHeight="Infinity"
+              GridPane.columnIndex="1"
+              GridPane.rowIndex="0">
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints percentHeight="75"
+                            vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="25"
+                            vgrow="ALWAYS"/>
+        </rowConstraints>
+
+        <!--
+            SONGS TABLE
+         -->
+        <VBox spacing="4"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="0"
+              GridPane.vgrow="ALWAYS">
+
+            <Label fx:id="songsLabel"
+                   text="Songs"
+                   maxWidth="Infinity"
+                   prefHeight="22"
+                   minHeight="22"
+                   maxHeight="22"
+                   style="-fx-font-family: 'JetBrains Mono';
+                          -fx-font-weight: bold;
+                          -fx-padding: 0 0 0 8;"/>
+
+            <TableView fx:id="songsTableView"
+                       maxWidth="Infinity"
+                       maxHeight="Infinity"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+                    <TableColumn fx:id="songIdColumn"
+                                 text="ID"/>
+                    <TableColumn fx:id="songArtistColumn"
+                                 text="Artist"/>
+                    <TableColumn fx:id="songTitleColumn"
+                                 text="Title"/>
+                    <TableColumn fx:id="songAlbumColumn"
+                                 text="Album"/>
+                    <TableColumn fx:id="songYearColumn"
+                                 text="Year"/>
+                    <TableColumn fx:id="songGenreColumn"
+                                 text="Genre"/>
+                    <TableColumn fx:id="songFilePathColumn"
+                                 text="File Path"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+        <!--
+            PLAYER AND PLAYLIST
+         -->
+        <VBox spacing="4"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="1"
+              GridPane.vgrow="ALWAYS">
+
+            <GridPane hgap="8"
+                      maxWidth="Infinity"
+                      maxHeight="Infinity"
+                      GridPane.columnIndex="0"
+                      GridPane.rowIndex="0"
+                      GridPane.hgrow="ALWAYS"
+                      GridPane.vgrow="ALWAYS">
+
+                <columnConstraints>
+                    <ColumnConstraints minWidth="26"
+                                       prefWidth="26"
+                                       maxWidth="26"/>
+
+                    <ColumnConstraints minWidth="430"
+                                       prefWidth="430"
+                                       maxWidth="430"/>
+
+                    <ColumnConstraints minWidth="48"
+                                       prefWidth="48"
+                                       maxWidth="48"/>
+
+                    <ColumnConstraints minWidth="26"
+                                       prefWidth="26"
+                                       maxWidth="26"/>
+
+                    <ColumnConstraints minWidth="300"
+                                       hgrow="ALWAYS"/>
+
+                    <ColumnConstraints minWidth="48"
+                                       prefWidth="48"
+                                       maxWidth="48"/>
+                </columnConstraints>
+
+                <rowConstraints>
+                    <RowConstraints percentHeight="100"
+                                    vgrow="ALWAYS"/>
+                </rowConstraints>
+
+                <Separator orientation="VERTICAL"
+                           GridPane.columnIndex="0"
+                           GridPane.rowIndex="0"
+                           GridPane.valignment="CENTER"
+                           maxHeight="Infinity"/>
+
+                <!--
+                    MEDIA PLAYER
+                 -->
+                <GridPane hgap="8"
+                          vgap="8"
+                          maxWidth="Infinity"
+                          maxHeight="Infinity"
+                          GridPane.columnIndex="1"
+                          GridPane.columnSpan="2"
+                          GridPane.rowIndex="0"
+                          GridPane.hgrow="ALWAYS"
+                          GridPane.vgrow="ALWAYS">
+
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+
+                        <ColumnConstraints minWidth="48"
+                                           prefWidth="48"
+                                           maxWidth="48"/>
+                    </columnConstraints>
+
+                    <rowConstraints>
+                        <RowConstraints minHeight="32"
+                                        prefHeight="32"
+                                        maxHeight="32"/>
+
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
+
+                    <!--
+                        LOADED SONG
+                     -->
+                    <Label fx:id="selectedSongLabel"
+                           textAlignment="CENTER"
+                           alignment="CENTER"
+                           maxWidth="Infinity"
+                           minHeight="32"
+                           prefHeight="32"
+                           maxHeight="32"
+                           GridPane.columnIndex="0"
+                           GridPane.rowIndex="0"
+                           style="-fx-font-family: 'JetBrains Mono';
+                                  -fx-font-weight: bold;
+                                  -fx-padding: 16 0 0 0;"/>
+
+                    <!--
+                        PLAYBACK CONTROLS
+                     -->
+                    <VBox spacing="12"
+                          alignment="CENTER"
+                          maxWidth="Infinity"
+                          maxHeight="Infinity"
+                          GridPane.columnIndex="0"
+                          GridPane.rowIndex="1"
+                          GridPane.hgrow="ALWAYS"
+                          GridPane.vgrow="ALWAYS"
+                          style="-fx-padding: 16 0 0 0;">
+
+                        <HBox spacing="16"
+                              alignment="CENTER">
+
+                            <Button fx:id="previousButton"
+                                    text="⏮"
+                                    prefWidth="48"
+                                    prefHeight="32"
+                                    minHeight="32"
+                                    maxHeight="32"
+                                    style="-fx-font-size: 20px;"/>
+
+                            <Button fx:id="playPauseButton"
+                                    text="▶"
+                                    prefWidth="64"
+                                    prefHeight="64"
+                                    minHeight="64"
+                                    maxHeight="64"
+                                    style="-fx-font-size: 32px;"/>
+
+                            <Button fx:id="nextButton"
+                                    text="⏭"
+                                    prefWidth="48"
+                                    prefHeight="32"
+                                    minHeight="32"
+                                    maxHeight="32"
+                                    style="-fx-font-size: 20px;"/>
+                        </HBox>
+
+                        <VBox spacing="4"
+                              alignment="CENTER"
+                              maxWidth="Infinity">
+
+                            <Slider fx:id="timeSlider"
+                                    min="0"
+                                    max="100"
+                                    value="0"
+                                    maxWidth="400"
+                                    style="-fx-padding: 16 0 0 0;"/>
+
+                            <Label fx:id="timeLabel"
+                                   text="0:00 / 0:00"
+                                   alignment="CENTER"
+                                   maxWidth="Infinity"/>
+                        </VBox>
+                    </VBox>
+
+                    <!--
+                        VOLUME CONTROL
+                     -->
+                    <VBox spacing="4"
+                          alignment="CENTER"
+                          maxHeight="Infinity"
+                          GridPane.columnIndex="1"
+                          GridPane.rowIndex="1"
+                          GridPane.vgrow="ALWAYS">
+
+                        <Label fx:id="volumeLabel"
+                               text="50"/>
+
+                        <Slider fx:id="volumeSlider"
+                                orientation="VERTICAL"
+                                min="0"
+                                max="100"
+                                value="50"
+                                prefHeight="100"/>
+                    </VBox>
+                </GridPane>
+
+                <Separator orientation="VERTICAL"
+                           GridPane.columnIndex="3"
+                           GridPane.rowIndex="0"
+                           GridPane.valignment="CENTER"
+                           maxHeight="Infinity"/>
+
+                <!--
+                    PLAYLIST TABLE
+                 -->
+                <VBox spacing="4"
+                      GridPane.columnIndex="4"
+                      GridPane.rowIndex="0"
+                      GridPane.vgrow="ALWAYS">
+
+                    <Label fx:id="playlistLabel"
+                           text="Playlist"
+                           maxWidth="Infinity"
+                           prefHeight="22"
+                           minHeight="22"
+                           maxHeight="22"
+                           style="-fx-font-family: 'JetBrains Mono';
+                                  -fx-font-weight: bold;
+                                  -fx-padding: 0 0 0 8;"/>
+
+                    <TableView fx:id="playlistSongsTableView"
+                               maxWidth="Infinity"
+                               maxHeight="Infinity"
+                               VBox.vgrow="ALWAYS">
+
+                        <columns>
+                            <TableColumn fx:id="playlistPositionColumn"
+                                         text="Pos"/>
+                            <TableColumn fx:id="playlistSongArtistColumn"
+                                         text="Artist"/>
+                            <TableColumn fx:id="playlistSongTitleColumn"
+                                         text="Title"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!--
+                    PLAYLIST ACTIONS
+                 -->
+                <VBox spacing="8"
+                      alignment="CENTER"
+                      GridPane.columnIndex="5"
+                      GridPane.rowIndex="0"
+                      style="-fx-padding: 28 0 0 0;">
+
+                    <Button fx:id="posUpButton"
+                            text="↑"
+                            prefWidth="32"
+                            prefHeight="32"
+                            minHeight="32"
+                            maxHeight="32"
+                            style="-fx-font-size: 20px;"/>
+
+                    <Button fx:id="posDownButton"
+                            text="↓"
+                            prefWidth="32"
+                            prefHeight="32"
+                            minHeight="32"
+                            maxHeight="32"
+                            style="-fx-font-size: 20px;"/>
+
+                    <Button fx:id="addButton"
+                            text="+"
+                            prefWidth="32"
+                            prefHeight="32"
+                            minHeight="32"
+                            maxHeight="32"
+                            style="-fx-font-size: 20px;"/>
+
+                    <Button fx:id="removeButton"
+                            text="−"
+                            prefWidth="32"
+                            prefHeight="32"
+                            minHeight="32"
+                            maxHeight="32"
+                            style="-fx-font-size: 20px;"/>
+                </VBox>
+            </GridPane>
+        </VBox>
+    </GridPane>
+</GridPane>

@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+/*
+    PROJECT CONFIGURATION
+ */
+
+group = 'app.mp3playerdb'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.53.2.0'
+    implementation 'com.mpatric:mp3agic:0.9.1'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+/*
+    APPLICATION CONFIGURATION
+ */
+
+application {
+    mainClass = 'app.mp3playerdb.MainApp'
+
+    applicationDefaultJvmArgs = ['--enable-native-access=javafx.graphics,javafx.media,ALL-UNNAMED']
+}
+javafx {
+    version = "25.0.2"
+    modules = [
+            "javafx.controls",
+            "javafx.fxml",
+            "javafx.media"
+    ]
+}
+
+jar {
+    archiveFileName = 'Mp3PlayerDb.jar'
+}
+
+/*
+    JPACKAGE INPUT PREPARATION
+ */
+
+tasks.register('prepareJpackageInput', Copy) {
+    dependsOn build
+
+    doFirst {
+        delete "$projectDir/jpackage-input"
+    }
+
+    into "$projectDir/jpackage-input"
+
+    from("$buildDir/libs/Mp3PlayerDb.jar")
+
+    from(configurations.runtimeClasspath.filter { file ->
+        !file.name.startsWith("javafx-")
+    })
+}
